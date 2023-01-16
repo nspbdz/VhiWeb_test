@@ -83,23 +83,22 @@ class PhotoRepositoryImplement extends Eloquent implements PhotoRepository
 
     public function update( $request, $id)
     {
+        $user=Auth::user();
+        $this->model = $this->model->find($id);
+        $detailPhoto = PhotoDetails::where('photo_id', '=', $id)->first();
+        $detailPhoto->caption = $request->caption ??  $detailPhoto->caption;
+        $detailPhoto->tags = $request->tags ??  $detailPhoto->tags;
         try {
+            if($user->id == $this->model->user_id){
+            $detailPhoto->update();
+            }else{
+                return BaseController::error("maaf anda bukan pemilik foto Ini");
+            }
 
-            DB::beginTransaction();
-
-            $input = PhotoDetails::where('photo_id', $id)->update([
-                "caption" => $request->caption,
-                "tags" => $request->tags,
-            ]);
-            $query = PhotoDetails::find($input);
-
-
-            DB::commit();
         } catch (\Exception $e) {
-            DB::rollback();
             return BaseController::error(NULL, $e->getMessage(), 400);
         }
-        return BaseController::success($query, "Sukses update data", 200);
+        return BaseController::success($detailPhoto, "Sukses update data", 200);
     }
     public function delete($id)
     {

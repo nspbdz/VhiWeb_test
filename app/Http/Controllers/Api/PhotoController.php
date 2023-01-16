@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Repositories\Photo\PhotoRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdatePhotosRequest;
 use App\Http\Requests\PostPhotosRequest;
 
 class PhotoController extends Controller
@@ -31,7 +30,7 @@ class PhotoController extends Controller
         return $this->PhotoRepository->detail($id);
     }
 
-    public function update(UpdatePhotosRequest $request, $id )
+    public function update(Request $request, $id )
     {
         return $this->PhotoRepository->update($request, $id);
     }

@@ -13,5 +13,8 @@ DB_PASSWORD=isi password
 8.import file di folder data postman
 9. lakukan pengetesan
 
+
 notes
-cek dan sesuaikan versi php terlebih dahulu
+-cek dan sesuaikan versi php terlebih dahulu
+-untuk set token bisa login terlebih dahulu dan set global token nya
+-token muncul di bagian response login dengan key accessToken
