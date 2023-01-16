@@ -9,7 +9,6 @@ use App\Models\PhotoDetails;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Storage;
 use DB;
-use File;
 use Illuminate\Support\Facades\Auth;
 
 class PhotoRepositoryImplement extends Eloquent implements PhotoRepository
@@ -29,7 +28,7 @@ class PhotoRepositoryImplement extends Eloquent implements PhotoRepository
 
     public function getAll()
     {
-        $query  = $this->model->with(['detail','likes'])->where('status', 1)->get();
+        $query  = $this->model->with(['detail', 'likes'])->where('status', 1)->get();
 
         if ($query->isEmpty()) {
             return BaseController::error(NULL, "Data tidak ditemukan", 400);
@@ -81,20 +80,19 @@ class PhotoRepositoryImplement extends Eloquent implements PhotoRepository
         return BaseController::success($query, "Berhasil menarik data detail", 200);
     }
 
-    public function update( $request, $id)
+    public function update($request, $id)
     {
-        $user=Auth::user();
+        $user = Auth::user();
         $this->model = $this->model->find($id);
         $detailPhoto = PhotoDetails::where('photo_id', '=', $id)->first();
         $detailPhoto->caption = $request->caption ??  $detailPhoto->caption;
         $detailPhoto->tags = $request->tags ??  $detailPhoto->tags;
         try {
-            if($user->id == $this->model->user_id){
-            $detailPhoto->update();
-            }else{
+            if ($user->id == $this->model->user_id) {
+                $detailPhoto->update();
+            } else {
                 return BaseController::error("maaf anda bukan pemilik foto Ini");
             }
-
         } catch (\Exception $e) {
             return BaseController::error(NULL, $e->getMessage(), 400);
         }
@@ -120,14 +118,15 @@ class PhotoRepositoryImplement extends Eloquent implements PhotoRepository
         return BaseController::success($query, "Sukses hapus data", 200);
     }
 
-    public function like($id){
+    public function like($id)
+    {
 
         try {
 
             DB::beginTransaction();
 
-            $query=Photo::find($id);
-            if(!empty($query)){
+            $query = Photo::find($id);
+            if (!empty($query)) {
                 $input = new Like();
                 $input->user_id = Auth::user()->id;
                 $input->photo_id = $id;
@@ -142,14 +141,13 @@ class PhotoRepositoryImplement extends Eloquent implements PhotoRepository
         return BaseController::success($input, "Sukses like Photo", 200);
     }
 
-    public function unlike($id){
-        // return $id;
-
+    public function unlike($id)
+    {
         try {
 
             DB::beginTransaction();
 
-            $delete=Like::where([
+            $delete = Like::where([
                 ['photo_id',  $id],
                 ['user_id',  Auth::user()->id]
             ])->delete();

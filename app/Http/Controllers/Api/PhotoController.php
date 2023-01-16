@@ -30,7 +30,7 @@ class PhotoController extends Controller
         return $this->PhotoRepository->detail($id);
     }
 
-    public function update(Request $request, $id )
+    public function update(Request $request, $id)
     {
         return $this->PhotoRepository->update($request, $id);
     }
@@ -49,5 +49,4 @@ class PhotoController extends Controller
     {
         return $this->PhotoRepository->unlike($id);
     }
-
 }

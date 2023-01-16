@@ -1,1 +1,429 @@
-{"info":{"_postman_id":"4e2ca557-4bcd-44b0-b4ff-0782293aac27","name":"VhiWeb","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},"item":[{"name":"User","item":[{"name":"Login","id":"f387e229-f953-4094-bce7-98ae982fab0d","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"method":"POST","header":[{"key":"Accept","value":"application/json","type":"text"}],"body":{"mode":"raw","raw":"{\r\n    \"email\":\"user@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}","options":{"raw":{"language":"json"}}},"url":{"raw":"{{host}}/api/v1/login","host":["{{host}}"],"path":["api","v1","login"]}},"response":[]}],"id":"fd2c3274-cb17-4cf6-afcb-131889206e02"},{"name":"Photos","item":[{"name":"All","id":"1cc30552-7659-4636-b229-099c0eb2b0c6","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"method":"GET","header":[],"url":{"raw":"{{host}}api/v1/photos","host":["{{host}}api"],"path":["v1","photos"]}},"response":[]},{"name":"Create","id":"64bc4845-e81a-4756-bcde-af53f43dab10","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"method":"POST","header":[{"key":"Accept","value":"application/json","type":"text"}],"body":{"mode":"formdata","formdata":[{"key":"image","type":"file","src":"/D:/backup/tabungan.jpg"},{"key":"caption","value":"testing","type":"text"},{"key":"tags","value":"testing","type":"text"},{"key":"","value":"","type":"text","disabled":true}]},"url":{"raw":"{{host}}api/v1/photos","host":["{{host}}api"],"path":["v1","photos"]}},"response":[]},{"name":"Detail","id":"baa11295-3817-42b5-b2b8-45cf377b4ec2","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"method":"GET","header":[{"key":"Accept","value":"application/json","type":"text"}],"body":{"mode":"formdata","formdata":[{"key":"image","type":"file","src":"/D:/backup/tabungan.jpg"},{"key":"caption","value":"testing","type":"text"},{"key":"tags","value":"testing","type":"text"},{"key":"","value":"","type":"text","disabled":true}]},"url":{"raw":"{{host}}api/v1/photos/1","host":["{{host}}api"],"path":["v1","photos","1"]}},"response":[]},{"name":"Delete","id":"1b9a9953-4364-431c-8bda-afca78dc6943","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"method":"DELETE","header":[{"key":"Accept","value":"application/json","type":"text"}],"body":{"mode":"formdata","formdata":[{"key":"image","type":"file","src":"/D:/backup/tabungan.jpg"},{"key":"caption","value":"testing","type":"text"},{"key":"tags","value":"testing","type":"text"},{"key":"","value":"","type":"text","disabled":true}]},"url":{"raw":"{{host}}api/v1/photos/1","host":["{{host}}api"],"path":["v1","photos","1"]}},"response":[]},{"name":"Update","id":"57f9c2f0-ff91-4000-bb0b-bcc5a5d12616","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"method":"PUT","header":[{"key":"Accept","value":"application/json","type":"text"}],"body":{"mode":"urlencoded","urlencoded":[{"key":"caption","value":"update","type":"text"},{"key":"tags","value":"update","type":"text"}]},"url":{"raw":"{{host}}api/v1/photos/1","host":["{{host}}api"],"path":["v1","photos","1"]}},"response":[]},{"name":"Like","id":"94847a0a-8fbf-4e8a-bf6f-2181af9032e2","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"method":"POST","header":[{"key":"Accept","value":"application/json","type":"text"}],"body":{"mode":"formdata","formdata":[]},"url":{"raw":"{{host}}api/v1/photos/1/like","host":["{{host}}api"],"path":["v1","photos","1","like"]}},"response":[]},{"name":"unlike","id":"6a875f46-e217-4203-9ca9-c3390ff2f31d","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"auth":{"type":"bearer","bearer":[{"key":"token","value":"{{token}}","type":"string"}]},"method":"POST","header":[{"key":"Accept","value":"application/json","type":"text"}],"body":{"mode":"formdata","formdata":[]},"url":{"raw":"{{host}}api/v1/photos/1/like","host":["{{host}}api"],"path":["v1","photos","1","like"]}},"response":[]}],"id":"2e50281c-f5ef-4dc9-951d-9bc2ddf08853"}]}
+{
+	"info": {
+		"_postman_id": "4e2ca557-4bcd-44b0-b4ff-0782293aac27",
+		"name": "VhiWeb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25098941"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"user@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}api/v1/login",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"user@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}api/v1/login",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Photos",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}api/v1/photos",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/backup/tabungan.jpg"
+								},
+								{
+									"key": "caption",
+									"value": "testing",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "testing",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/photos",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/backup/tabungan.jpg"
+								},
+								{
+									"key": "caption",
+									"value": "testing",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "testing",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/photos/1",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"photos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/backup/tabungan.jpg"
+								},
+								{
+									"key": "caption",
+									"value": "testing",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "testing",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/photos/1",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"photos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "caption",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "update",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}api/v1/photos/2",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"photos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}api/v1/photos/1/like",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"photos",
+								"1",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unlike",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}api/v1/photos/1/like",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"v1",
+								"photos",
+								"1",
+								"like"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

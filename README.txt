@@ -12,7 +12,11 @@ DB_PASSWORD=isi password
 7.buka postman
 8.import file di folder data postman
 9. lakukan pengetesan
-
+10. set environment global untuk token
+    -kanan atas click environment quick look
+    -add bagian global
+    -isi variable : token
+    -save
 
 notes
 -cek dan sesuaikan versi php terlebih dahulu

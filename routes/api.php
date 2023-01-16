@@ -34,8 +34,5 @@ Route::prefix('v1')->group(function () {
         Route::delete('/photos/{id}', [PhotoController::class, 'delete']);
         Route::post('/photos/{id}/like', [PhotoController::class, 'like']);
         Route::post('/photos/{id}/unlike', [PhotoController::class, 'unlike']);
-
-
-
     });
 });
